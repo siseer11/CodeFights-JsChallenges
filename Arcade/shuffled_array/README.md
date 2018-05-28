@@ -1,32 +1,68 @@
-[Challange link](https://codefights.com/arcade/code-arcade/sorting-outpost/s4BEFMcpLdGbjX9KX)
+[Challange link](https://codefights.com/arcade/code-arcade/list-backwoods/fmYdsYcGfaTu4yTQt)
 # Description
-A noob programmer was given two simple tasks: sum and sort the elements of the given array
-a = [a1, a2, ..., an]. He started with summing and did it easily, but decided to store the sum he found in some random position of the original array which was a bad idea. Now he needs to cope with the second task, sorting the original array a, and it's giving him trouble since he modified it.
+You are watching a volleyball tournament, but you missed the beginning of the very first game of your favorite team. Now you're curious about how the coach arranged the players on the field at the start of the game.
 
-Given the array shuffled, consisting of elements a1, a2, ..., an, a1 + a2 + ... + an in random order, return the sorted array of original elements a1, a2, ..., an.
+The team you favor plays in the following formation:
+
+0 3 0
+4 0 2
+0 6 0
+5 0 1
+where positive numbers represent positions occupied by players. After the team gains the serve, its members rotate one position in a clockwise direction, so the player in position 2 moves to position 1, the player in position 3 moves to position 2, and so on, with the player in position 1 moving to position 6.
+
+Here's how the players change their positions:
+![voleyballMove](https://codefightsuserpics.s3.amazonaws.com/tasks/volleyballPositions/img/example.png?_tm=1491409891893)
+
+
+Given the current formation of the team and the number of times k it gained the serve, find the initial position of each player in it.
 
 # Example
 
-For shuffled = [1, 12, 3, 6, 2], the output should be
-shuffledArray(shuffled) = [1, 2, 3, 6].
+For
 
-1 + 3 + 6 + 2 = 12, which means that 1, 3, 6 and 2 are original elements of the array.
+formation = [["empty",   "Player5", "empty"],
+             ["Player4", "empty",   "Player2"],
+             ["empty",   "Player3", "empty"],
+             ["Player6", "empty",   "Player1"]]
+and k = 2, the output should be
 
-For shuffled = [1, -3, -5, 7, 2], the output should be
-shuffledArray(shuffled) = [-5, -3, 2, 7].
+volleyballPositions(formation, k) = [
+    ["empty",   "Player1", "empty"],
+    ["Player2", "empty",   "Player3"],
+    ["empty",   "Player4", "empty"],
+    ["Player5", "empty",   "Player6"]
+]
+For
 
+formation = [["empty", "Alice", "empty"],
+             ["Bob",   "empty", "Charlie"],
+             ["empty", "Dave",  "empty"],
+             ["Eve",   "empty", "Frank"]]
+and k = 6, the output should be
+
+volleyballPositions(formation, k) = [
+    ["empty", "Alice", "empty"],
+    ["Bob",   "empty", "Charlie"],
+    ["empty", "Dave",  "empty"],
+    ["Eve",   "empty", "Frank"]
+]
 # Input/Output
 
 [execution time limit] 4 seconds (js)
 
-[input] array.integer shuffled
+[input] array.array.string formation
 
-Array of at least two integers. It is guaranteed that there is an index i such that shuffled[i] = shuffled[0] + ... + shuffled[i - 1] + shuffled[i + 1] + ... + shuffled[n].
+A 4 × 3 array of strings representing names of the players in the positions corresponding to those in the schema above.
+It is guaranteed that for each empty position the corresponding element of formation is "empty".
+It is also guaranteed that there is no player called "empty" in the team.
+
+[input] integer k
+
+The number of times the team gained the serve.
 
 Guaranteed constraints:
-2 ≤ shuffled.length ≤ 15,
--300 ≤ shuffled[i] ≤ 300.
+0 ≤ k ≤ 109.
 
-[output] array.integer
+[output] array.array.string
 
-A sorted array of shuffled.length - 1 elements.
+Team arrangement at the start of the game.
